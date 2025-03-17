@@ -496,6 +496,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8427760e962df224bb71ffb5804dae16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeScale: 1
 --- !u!4 &767299423
 Transform:
   m_ObjectHideFlags: 0
@@ -973,7 +974,8 @@ MonoBehaviour:
   agentCount: 100
   epCount: 2000
   maxLifetime: 10
-  vecRatio: 0.1
+  vecARatio: 0.15
+  vecNRatio: 0.05
   bsetScore: 0
   bestMesh: {fileID: 0}
   bestVectors: []

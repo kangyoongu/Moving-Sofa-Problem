@@ -18,7 +18,8 @@ namespace Kang
         public int agentCount = 10;
         public int epCount = 10;
         public float maxLifetime = 10f;
-        public float vecRatio = 0.1f;
+        public float vecARatio = 0.1f;
+        public float vecNRatio = 0.05f;
 
         public float bsetScore = 0f;
         

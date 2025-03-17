@@ -31,7 +31,7 @@ namespace Kang
             constForce.torque = 0f;
             material.color = Core.RandomColor();
 
-            Vector2[] mut = Core.Mutation(AgentManager.Instance.bestVectors, AgentManager.Instance.power, AgentManager.Instance.ratio, AgentManager.Instance.vecRatio);
+            Vector2[] mut = Core.Mutation(AgentManager.Instance.bestVectors, AgentManager.Instance.power, AgentManager.Instance.ratio, AgentManager.Instance.vecARatio, AgentManager.Instance.vecNRatio);
             col.SetPath(0, mut);
 
             meshFilter.mesh = AgentManager.Instance.GetMesh(col, transform);

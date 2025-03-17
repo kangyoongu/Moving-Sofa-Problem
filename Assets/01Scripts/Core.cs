@@ -37,7 +37,7 @@ namespace Kang
 
             return totalArea;
         }
-        public static Vector2[] Mutation(Vector2[] origin, float power, float ratio, float vertRatio)
+        public static Vector2[] Mutation(Vector2[] origin, float power, float ratio, float vertARatio, float vertNRatio)
         {
             List<Vector2> mutVec = new List<Vector2>(origin);
 
@@ -47,17 +47,17 @@ namespace Kang
                 {
                     mutVec[i] = SingleMotation(power, origin[i]);
                 }
-                if (RandomBool(vertRatio))
+                if (RandomBool(vertNRatio))
                 {
                     int index = Random.Range(0, origin.Length);
-                    if (RandomBool(0.5f))
-                        mutVec.RemoveAt(index);
-                    else 
-                    {
-                        Vector2 newPos = origin[index] + origin[(index + 1) % origin.Length];
-                        newPos *= 0.5f;
-                        mutVec.Insert(index, SingleMotation(power, newPos));
-                    }
+                    mutVec.RemoveAt(index);
+                }
+                if (RandomBool(vertARatio))
+                {
+                    int index = Random.Range(0, origin.Length);
+                    Vector2 newPos = origin[index] + origin[(index + 1) % origin.Length];
+                    newPos *= 0.5f;
+                    mutVec.Insert(index, SingleMotation(power, newPos));
                 }
             }
             return mutVec.ToArray();
