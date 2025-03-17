@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66fcfcfa3f3ee5c438b56adca591c0c4, type: 3}
+  m_Name: MoveSpeedStat
+  m_EditorClassIdentifier: 
+  statName: MoveSpeed
+  description: move
+  _icon: {fileID: 9087613101874884219, guid: 6419b5ed186b19a4c9237c2a01bf7aa6, type: 3}
+  _displayName: MS
+  _baseValue: 21
+  _minValue: 5
+  _maxValue: 40
+  <IsPercent>k__BackingField: 0
