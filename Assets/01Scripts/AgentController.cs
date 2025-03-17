@@ -12,6 +12,7 @@ namespace Kang
         [HideInInspector] public MeshFilter meshFilter;
         [HideInInspector] public PolygonCollider2D col;
         public float score;
+        int forceIndex = 0;
         void Awake()
         {
             material = GetComponent<MeshRenderer>().material;
@@ -34,16 +35,18 @@ namespace Kang
             Vector2[] mut = Core.Mutation(AgentManager.Instance.bestVectors, AgentManager.Instance.power, AgentManager.Instance.ratio, AgentManager.Instance.vecARatio, AgentManager.Instance.vecNRatio);
             col.SetPath(0, mut);
 
-            meshFilter.mesh = AgentManager.Instance.GetMesh(col, transform);
-            score = Core.CalculateMeshArea(meshFilter.mesh);
+            var mesh = AgentManager.Instance.GetMesh(col, transform);
+            meshFilter.mesh = mesh;
+            score = Core.CalculateMeshArea(meshFilter.mesh) + mesh.vertices.Length * AgentManager.Instance.vertCountWeight;
         }
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            if(collision.gameObject.name == "LeftWall")
+            if(forceIndex < AgentManager.Instance.sofaForces.Count && collision.gameObject.name == AgentManager.Instance.sofaForces[forceIndex].name)
             {
-                constForce.torque = AgentManager.Instance.torque;
-                constForce.force = new Vector2(0f, -AgentManager.Instance.moveForce);
+                constForce.torque = AgentManager.Instance.sofaForces[forceIndex].turque;
+                constForce.force = AgentManager.Instance.sofaForces[forceIndex].force;
+                forceIndex++;
             }
         }
         private void OnTriggerEnter2D(Collider2D other)

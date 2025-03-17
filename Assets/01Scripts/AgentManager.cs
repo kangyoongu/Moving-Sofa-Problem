@@ -11,7 +11,6 @@ namespace Kang
         public GameObject agent;
         public Transform startPos;
         public float moveForce;
-        public float torque;
         [Space()]
         public float power = 0.1f;
         public float ratio = 0.8f;
@@ -20,12 +19,13 @@ namespace Kang
         public float maxLifetime = 10f;
         public float vecARatio = 0.1f;
         public float vecNRatio = 0.05f;
-
+        public float vertCountWeight;
         public float bsetScore = 0f;
         
         public Mesh bestMesh;
         public Vector2[] bestVectors;
         private PolygonCollider2D startCollider;
+        public List<SofaForce> sofaForces;
 
         List<AgentController> agents;
         List<AgentController> goalAgents;
@@ -107,4 +107,12 @@ namespace Kang
             agents.Remove(agentController);
         }
     }
+}
+
+[Serializable]
+public struct SofaForce
+{
+    public string name;
+    public Vector2 force;
+    public float turque;
 }
